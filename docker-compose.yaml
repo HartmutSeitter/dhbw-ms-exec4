@@ -1,0 +1,32 @@
+version: '3'
+services: 
+  hsposts:
+    build: posts/.
+    ports:
+      - "4000:4000"
+    image: hartmutseitter/dhbw-exec4-nodejs-posts
+    container_name: hsposts
+  hscomments:
+    build: comments/.
+    ports:
+      - "4001:4001"
+    image: hartmutseitter/dhbw-exec4-nodejs-comments
+    container_name: hscomments
+  hsquery:
+    build: query/.
+    ports:
+      - "4002:4002"
+    image: hartmutseitter/dhbw-exec4-nodejs-query
+    container_name: hsquery
+  hsmoderation:
+    build: moderation/.
+    image: hartmutseitter/dhbw-exec4-nodejs-moderation
+    container_name: hsmoderation
+  hsevent:
+    build: eventbus/.
+    image: hartmutseitter/dhbw-exec4-nodejs-eventbus
+    container_name: hseventbus
+networks:
+  default:
+    name: hsbridge
+      
